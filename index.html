@@ -5,25 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
+    <link rel="stylesheet" href="./pages/intlTelInput.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-size: 20px;
             margin: 0;
             padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
+            background-color: rgb(248, 0, 66);
         }
 
         form {
-            background-color: #8ef0ff;
+            background-color: #ffffff43;
+            color:#fff;
+            font-style: bold;
+            text-shadow: 1 1 5px rgba(0, 0, 0, 0.711);
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.358);
+            max-width: 600px;
+            width: 600px;
+            background: url('./pages/jordan.gif') no-repeat center center fixed;
+            background-size:auto;
         }
 
         h2 {
@@ -44,16 +51,48 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-
+        input[type=text],input[type=email],input[type=address],input[type=password],input[type=date]{
+            background-color: rgba(255, 255, 255, 0.443);
+            font-size: large;
+        }
+        #contactNumber{
+            background-color: rgba(255, 255, 255, 0.443);
+        }
+        
+        #favoriteSports{
+            background-color: rgba(255, 255, 255, 0.443);
+        }
+        
         button {
-            background-color: #4caf50;
-            color: #fff;
-            padding: 10px;
             border: none;
             border-radius: 4px;
-            cursor: pointer;
+            padding: 10px;
             font-size: 16px;
-            width: 100%;
+            color: #fff;
+            background-color: #230059;
+            position: relative;
+            overflow: hidden;
+            width:100%;
+        }
+        @keyframes shine {
+        0% {left: -100px}
+        20% {left: 100%}
+        100% {left: 100%}
+        }
+        button:before {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 100%;
+        background-image: linear-gradient(
+            120deg,
+            rgba(255,255,255, 0) 30%,
+            rgba(255,255,255, .8),
+            rgba(255,255,255, 0) 70%
+        );
+        top: 0;
+        left: -100px;
+        animation: shine 3s infinite linear;
         }
 
         button:hover {
@@ -63,6 +102,7 @@
         .checkbox-container {
             display: flex;
             align-items: center;
+            font-size: 15px;
         }
 
         .checkbox-label {
@@ -74,77 +114,113 @@
                 max-width: 100%;
             }
         }
+
     </style>
 </head>
 
 <body>
-    <form id="signupForm">
-        <h2>SPORTS MANIA</h2>
-        <label for="fullname">Full Name:</label>
-        <input type="text" id="fullname" name="fullname" required>
+    <div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <form method="GET" action="./pages/landing.html" name="myForm" onsubmit="return(jsvalidation())" id="signupForm">
+            <h2>SPORTS MANIA</h2>
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
 
-        <label for="contactNumber">Contact Number:</label>
-        <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]{10}" required
-            title="Please enter a 10-digit contact number">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
 
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob" required>
+            Contact Number: 
+            <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]{10}" required
+                title="Please enter a 10-digit contact number"> <br><br>
 
-        <label for="favoriteSports">Favorite Sports:</label>
-        <select id="favoriteSports" name="favoriteSports" required>
-            <option value="" disabled selected>Select your favorite sports</option>
-            <option value="football">Football</option>
-            <option value="basketball">Basketball</option>
-            <option value="tennis">Tennis</option>
-        </select>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
 
-        <div class="checkbox-container">
-            <input type="checkbox" id="termsAgreement" name="termsAgreement" required>
-            <label class="checkbox-label" for="termsAgreement">I agree to the Terms of Service and Privacy
-                Policy</label>
-        </div>
+            <label for="favoriteSports">Favorite Sports:</label>
+            <select id="favoriteSports" name="favoriteSports" required>
+                <option value="" disabled selected>Select your favorite sports</option>
+                <option value="football">Football</option>
+                <option value="basketball">Basketball</option>
+                <option value="tennis">Tennis</option>
+                <option value="Cricket">Cricket</option>
+                <option value="Volleyball">Volleyball</option>
+                <option value="Field Hockey">Field Hockey</option>
+            </select>
 
-        <button type="submit">Sign Up</button>
-    </form>
+            <div class="checkbox-container">
+                <input type="checkbox" id="termsAgreement" name="termsAgreement" required>
+                <label class="checkbox-label" for="termsAgreement">I agree to the Terms of Service and Privacy
+                    Policy</label>
+            </div>
 
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+    <script src="./pages/intlTelInput.js"></script>
     <script>
+        var input = document.querySelector("#contactNumber");
+        window.intlTelInput(input, {});
         document.getElementById("signupForm").addEventListener("submit", function (event) {
-            event.preventDefault();
+            // event.preventDefault();
 
-            const fullName = document.getElementById("fullname").value;
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            const username = document.getElementById("username").value;
-            const contactNumber = document.getElementById("contactNumber").value;
-            const dob = document.getElementById("dob").value;
-            const favoriteSports = document.getElementById("favoriteSports").value;
-            const termsAgreement = document.getElementById("termsAgreement").checked;
-
-            const userData = {
-                fullName: fullName,
-                email: email,
-                password: password,
-                username: username,
-                contactNumber: contactNumber,
-                dob: dob,
-                favoriteSports: favoriteSports,
-                termsAgreement: termsAgreement
-            };
-
-            console.log(userData);
             alert("Signup successful!");
-            window.location.href = "./pages/login.html";
         });
+        function jsvalidation() {
+            if (document.getElementById("fullname").value == "") {
+                alert("Full Name cannot be left blank");
+                document.getElementById("fullname").focus();
+                return false;
+            }
 
+            if (document.getElementById("username").value == "") {
+                alert("Username cannot be left blank");
+                document.getElementById("username").focus();
+                return false;
+            }
+
+            if (document.getElementById("email").value == "") {
+                alert("Email cannot be left blank");
+                document.getElementById("email").focus();
+                return false;
+            }
+
+            if (document.getElementById("password").value == "") {
+                alert("Password cannot be left blank");
+                document.getElementById("password").focus();
+                return false;
+            }
+
+            if (document.getElementById("contactNumber").value == "") {
+                alert("Contact Number cannot be left blank");
+                document.getElementById("contactNumber").focus();
+                return false;
+            }
+
+            if (document.getElementById("dob").value == "") {
+                alert("Date of Birth cannot be left blank");
+                document.getElementById("dob").focus();
+                return false;
+            }
+
+            if (document.getElementById("favoriteSports").value == "") {
+                alert("Please select your favorite sports");
+                document.getElementById("favoriteSports").focus();
+                return false;
+            }
+
+            if (!document.getElementById("termsAgreement").checked) {
+                alert("Please agree to the Terms of Service and Privacy Policy");
+                return false;
+            }
+
+            return true;
+        }
 
     </script>
 </body>
