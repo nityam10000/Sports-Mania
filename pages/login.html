@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Add your styling here (optional) */
+    </style>
+</head>
+
+<body>
+    <h1>Login</h1>
+    <form id="loginForm">
+        <label for="usernameOrEmail">Username or Email:</label>
+        <input type="text" id="usernameOrEmail" name="usernameOrEmail" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Login</button>
+    </form>
+    <p id="message"></p>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const usernameOrEmail = document.getElementById("usernameOrEmail").value;
+            const password = document.getElementById("password").value;
+
+            // Replace this with actual authentication logic (e.g., sending data to server)
+            const validCredentials = (usernameOrEmail === "user" && password === "password"); // Example credentials
+
+            if (validCredentials) {
+                alert("Login successful!");
+                window.location.href = "./landing.html";
+            } else {
+                document.getElementById("message").textContent = "Invalid username/email or password.";
+            }
+        });
+    </script>
+</body>
+
+</html>
