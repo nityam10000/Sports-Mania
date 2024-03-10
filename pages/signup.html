@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
-    <link rel="stylesheet" href="./pages/intlTelInput.css">
+    <link rel="stylesheet" href="intlTelInput.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,7 +22,6 @@
         form {
             background-color: #ffffff43;
             color:#fff;
-            font-style: bold;
             text-shadow: 1 1 5px rgba(0, 0, 0, 0.711);
             padding: 20px;
             border-radius: 8px;
@@ -58,6 +57,9 @@
         #contactNumber{
             background-color: rgba(255, 255, 255, 0.443);
         }
+        #contact{
+            color:black;
+        }
         
         #favoriteSports{
             background-color: rgba(255, 255, 255, 0.443);
@@ -87,7 +89,7 @@
         background-image: linear-gradient(
             120deg,
             rgba(255,255,255, 0) 30%,
-            rgba(255,255,255, .8),
+            rgba(255, 255, 255, 0.8),
             rgba(255,255,255, 0) 70%
         );
         top: 0;
@@ -121,7 +123,7 @@
 <body>
     <div>
 
-        <form method="GET" action="./pages/landing.html" name="myForm" onsubmit="return(jsvalidation())" id="signupForm">
+        <form method="GET" action="https://nityam10000.github.io/Sports-Mania/" name="myForm" onsubmit="return(jsvalidation())" id="signupForm">
             <h2>SPORTS MANIA</h2>
             <label for="fullname">Full Name:</label>
             <input type="text" id="fullname" name="fullname" required>
@@ -135,9 +137,11 @@
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
 
+            <div id="contact">
             Contact Number: 
             <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]{10}" required
                 title="Please enter a 10-digit contact number"> <br><br>
+            </div>
 
             <label for="dob">Date of Birth:</label>
             <input type="date" id="dob" name="dob" required>
@@ -162,12 +166,11 @@
             <button type="submit">Sign Up</button>
         </form>
     </div>
-    <script src="./pages/intlTelInput.js"></script>
+    <script src="intlTelInput.js"></script>
     <script>
         var input = document.querySelector("#contactNumber");
         window.intlTelInput(input, {});
         document.getElementById("signupForm").addEventListener("submit", function (event) {
-            // event.preventDefault();
 
             alert("Signup successful!");
         });
