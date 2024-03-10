@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Pacifico&family=Paytone+One&family=Permanent+Marker&family=Protest+Revolution&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=M+PLUS+1p&family=Pacifico&family=Paytone+One&family=Permanent+Marker&family=Protest+Revolution&display=swap');
+
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+nav{
+    background-image: url("./landing_images/pxfuel\ \(1\).jpg");
+    height: 100vh;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: inset 0px 0px 20px 6px;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.navigation h2 {
+    font-family: "Paytone One", sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(255, 102, 0);
+}
+
+.tools {
+    font-family: "M PLUS 1p", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    display: flex;
+    gap: 20px;
+}
+
+.tools a {
+    background-color: none;
+    text-decoration: none;
+    color: white;
+}
+
+.navtools {
+    padding: 10px 20px;
+    position: relative;
+}
+
+.navtools a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.navtools a:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ddd;
+    transition: width 0.3s ease-out;
+}
+
+.navtools a:hover {
+    color: rgb(255, 102, 0);
+}
+
+.navtools a:hover:after {
+    width: 100%;
+    background-color: rgb(255, 102, 0);
+}
+.site-name{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    align-self: center;
+    margin-bottom: 150px;
+}
+.entry-line{
+    text-align: left;
+    width: 80vw;
+    /* border: 2px solid white; */
+}
+.entry-line :nth-child(1){
+    font-family: "Paytone One", sans-serif;
+    font-size: 70px;
+    font-weight: 400;
+    font-style: normal;
+    color:rgb(255, 102, 0);
+}
+.entry-line :nth-child(2){
+    font-family: "Paytone One", sans-serif;
+    font-size: 70px;
+    font-weight: 400;
+    font-style: normal;
+    color:rgb(255, 255, 255);
+}
+
+main{
+    background-color: black;
+    height: 80vh;
+    color: white;
+}
+.find-clubs{
+    padding: 60px;
+    height: 22rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: 50% 40%;
+    justify-items: center;
+    gap: 2px;
+}
+.letters{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    font-family: "Paytone One", sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    font-style: normal;
+    color:rgb(255, 255, 255);
+}
+.letters :nth-child(2){
+    font-family: "Paytone One", sans-serif;
+    font-size: 50px;
+    font-weight: 400;
+    font-style: normal;
+    color:rgb(255, 102, 0);
+}
+#maps{
+    border: 2px solid white;
+    width: 50%;
+    height: 10rem;
+}
