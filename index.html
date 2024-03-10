@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sports Mania</title>
     <link rel="stylesheet" href="./landing.css">
 </head>
+
 <body>
     <nav>
         <div class="navigation">
@@ -32,7 +34,18 @@
                 <p>NEAR YOU</p>
             </div>
             <div class="mapping">
-                <button onclick="getLocation()">Get My Location</button>
+                <label for="sportsType">Select Sports Type:</label>
+                <select id="sportsType">
+                    <option value="football">Football</option>
+                    <option value="basketball">Basketball</option>
+                    <option value="tennis">Tennis</option>
+                    <option value="cricket">Cricket</option>
+                    <option value="Volleyball">Volleyball</option>
+                    <option value="Kabaddi">Kabaddi</option>
+                    <option value="badminton">Badminton</option>
+                    <option value="archery">Archery</option>
+                </select>
+                <button onclick="searchNearbySportsEnthusiasts()">Search</button>
                 <div id="map"></div>
             </div>
         </div>
@@ -50,7 +63,7 @@
             placesService = new google.maps.places.PlacesService(map);
         }
 
-        function getLocation() {
+        function searchNearbySportsEnthusiasts() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     const pos = {
@@ -60,13 +73,11 @@
 
                     map.setCenter(pos);
 
-                    // Fetch nearby places based on the user's location
-                    fetchNearbyPlaces(pos);
+                    fetchNearbySportsEnthusiasts(pos);
                 }, function () {
                     handleLocationError(true, map.getCenter());
                 });
             } else {
-                // Browser doesn't support Geolocation
                 handleLocationError(false, map.getCenter());
             }
         }
@@ -77,11 +88,13 @@
                 'Error: Your browser doesn\'t support geolocation.');
         }
 
-        function fetchNearbyPlaces(location) {
+        function fetchNearbySportsEnthusiasts(location) {
+            const sportsType = document.getElementById("sportsType").value;
+
             const request = {
                 location: location,
-                radius: '500',
-                type: ['restaurant'] // Change this to the desired type of places
+                radius: '10000',
+                keyword: sportsType
             };
 
             placesService.nearbySearch(request, function (results, status) {
@@ -106,7 +119,10 @@
         }
     </script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD12-5rPEIp4eDEvBIJ5MAQbqYdvqRRpSw&libraries=places&callback=initMap" async defer></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD12-5rPEIp4eDEvBIJ5MAQbqYdvqRRpSw&libraries=places&callback=initMap"
+        async defer></script>
 
 </body>
+
 </html>
