@@ -138,8 +138,7 @@ main{
     font-style: normal;
     color:rgb(255, 102, 0);
 }
-#maps{
-    border: 2px solid white;
-    width: 50%;
-    height: 10rem;
+#map {
+    height: 400px;
+    width: 500px;
 }
