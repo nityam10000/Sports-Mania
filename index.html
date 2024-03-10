@@ -1,228 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
-    <link rel="stylesheet" href="./pages/intlTelInput.css">
+    <title>Sports Mania</title>
+    <link rel="stylesheet" href="./landing.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 20px;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: rgb(248, 0, 66);
-        }
-
-        form {
-            background-color: #ffffff43;
-            color:#fff;
-            font-style: bold;
-            text-shadow: 1 1 5px rgba(0, 0, 0, 0.711);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.358);
-            max-width: 600px;
-            width: 600px;
-            background: url('./pages/jordan.gif') no-repeat center center fixed;
-            background-size:auto;
-        }
-
-        h2 {
-            text-align: center;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        input,
-        select {
+        #map {
+            height: 400px;
             width: 100%;
-            padding: 8px;
-            margin-bottom: 16px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
         }
-        input[type=text],input[type=email],input[type=address],input[type=password],input[type=date]{
-            background-color: rgba(255, 255, 255, 0.443);
-            font-size: large;
-        }
-        #contactNumber{
-            background-color: rgba(255, 255, 255, 0.443);
-        }
-        
-        #favoriteSports{
-            background-color: rgba(255, 255, 255, 0.443);
-        }
-        
-        button {
-            border: none;
-            border-radius: 4px;
-            padding: 10px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #230059;
-            position: relative;
-            overflow: hidden;
-            width:100%;
-        }
-        @keyframes shine {
-        0% {left: -100px}
-        20% {left: 100%}
-        100% {left: 100%}
-        }
-        button:before {
-        content: '';
-        position: absolute;
-        width: 100px;
-        height: 100%;
-        background-image: linear-gradient(
-            120deg,
-            rgba(255,255,255, 0) 30%,
-            rgba(255,255,255, .8),
-            rgba(255,255,255, 0) 70%
-        );
-        top: 0;
-        left: -100px;
-        animation: shine 3s infinite linear;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            font-size: 15px;
-        }
-
-        .checkbox-label {
-            margin-left: 8px;
-        }
-
-        @media only screen and (max-width: 600px) {
-            form {
-                max-width: 100%;
-            }
-        }
-
     </style>
 </head>
-
 <body>
-    <div>
-
-        <form method="GET" action="./pages/landing.html" name="myForm" onsubmit="return(jsvalidation())" id="signupForm">
-            <h2>SPORTS MANIA</h2>
-            <label for="fullname">Full Name:</label>
-            <input type="text" id="fullname" name="fullname" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-
-            Contact Number: 
-            <input type="tel" id="contactNumber" name="contactNumber" pattern="[0-9]{10}" required
-                title="Please enter a 10-digit contact number"> <br><br>
-
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" required>
-
-            <label for="favoriteSports">Favorite Sports:</label>
-            <select id="favoriteSports" name="favoriteSports" required>
-                <option value="" disabled selected>Select your favorite sports</option>
-                <option value="football">Football</option>
-                <option value="basketball">Basketball</option>
-                <option value="tennis">Tennis</option>
-                <option value="Cricket">Cricket</option>
-                <option value="Volleyball">Volleyball</option>
-                <option value="Field Hockey">Field Hockey</option>
-            </select>
-
-            <div class="checkbox-container">
-                <input type="checkbox" id="termsAgreement" name="termsAgreement" required>
-                <label class="checkbox-label" for="termsAgreement">I agree to the Terms of Service and Privacy
-                    Policy</label>
+    <nav>
+        <div class="navigation">
+            <div class="logo">
+                <h2>Sports Mania</h2>
             </div>
+            <div class="tools">
+                <div class="navtools"><a href="">ABOUT</a></div>
+                <div class="navtools"><a href="./pages/login.html">LOGIN</a></div>
+                <div class="navtools"><a href="./pages/signup.html">SIGN UP</a></div>
+            </div>
+        </div>
+        <div class="site-name">
+            <div class="entry-line">
+                <p>SINGLE HUB</p>
+                <p>FOR SPORTS ENTHUSIASTS</p>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="find-clubs">
+            <div class="letters">
+                <p>FIND SPORTS CLUBS</p>
+                <p>NEAR YOU</p>
+            </div>
+            <div class="mapping">
+                <button onclick="getLocation()">Get My Location</button>
+                <div id="map"></div>
+            </div>
+        </div>
+    </main>
 
-            <button type="submit">Sign Up</button>
-        </form>
-    </div>
-    <script src="./pages/intlTelInput.js"></script>
     <script>
-        var input = document.querySelector("#contactNumber");
-        window.intlTelInput(input, {});
-        document.getElementById("signupForm").addEventListener("submit", function (event) {
-            // event.preventDefault();
+        let map, placesService;
 
-            alert("Signup successful!");
-        });
-        function jsvalidation() {
-            if (document.getElementById("fullname").value == "") {
-                alert("Full Name cannot be left blank");
-                document.getElementById("fullname").focus();
-                return false;
-            }
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -33.867, lng: 151.195 },
+                zoom: 15
+            });
 
-            if (document.getElementById("username").value == "") {
-                alert("Username cannot be left blank");
-                document.getElementById("username").focus();
-                return false;
-            }
-
-            if (document.getElementById("email").value == "") {
-                alert("Email cannot be left blank");
-                document.getElementById("email").focus();
-                return false;
-            }
-
-            if (document.getElementById("password").value == "") {
-                alert("Password cannot be left blank");
-                document.getElementById("password").focus();
-                return false;
-            }
-
-            if (document.getElementById("contactNumber").value == "") {
-                alert("Contact Number cannot be left blank");
-                document.getElementById("contactNumber").focus();
-                return false;
-            }
-
-            if (document.getElementById("dob").value == "") {
-                alert("Date of Birth cannot be left blank");
-                document.getElementById("dob").focus();
-                return false;
-            }
-
-            if (document.getElementById("favoriteSports").value == "") {
-                alert("Please select your favorite sports");
-                document.getElementById("favoriteSports").focus();
-                return false;
-            }
-
-            if (!document.getElementById("termsAgreement").checked) {
-                alert("Please agree to the Terms of Service and Privacy Policy");
-                return false;
-            }
-
-            return true;
+            placesService = new google.maps.places.PlacesService(map);
         }
 
-    </script>
-</body>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    const pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
 
+                    map.setCenter(pos);
+
+                    // Fetch nearby places based on the user's location
+                    fetchNearbyPlaces(pos);
+                }, function () {
+                    handleLocationError(true, map.getCenter());
+                });
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, map.getCenter());
+            }
+        }
+
+        function handleLocationError(browserHasGeolocation, pos) {
+            console.error(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+        }
+
+        function fetchNearbyPlaces(location) {
+            const request = {
+                location: location,
+                radius: '500',
+                type: ['restaurant'] // Change this to the desired type of places
+            };
+
+            placesService.nearbySearch(request, function (results, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    for (let i = 0; i < results.length; i++) {
+                        createMarker(results[i]);
+                    }
+                }
+            });
+        }
+
+        function createMarker(place) {
+            const marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.setContent(place.name);
+                infowindow.open(map, this);
+            });
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD12-5rPEIp4eDEvBIJ5MAQbqYdvqRRpSw&libraries=places&callback=initMap" async defer></script>
+
+</body>
 </html>
